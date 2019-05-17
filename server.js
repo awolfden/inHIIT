@@ -52,6 +52,9 @@ app.use(session({
 const workoutController = require('./controllers/WorkoutController');
 const userController = require('./controllers/UserController');
 
+app.get('/', (req, res) => {
+    res.redirect('/workouts')
+})
 app.use('/workouts', workoutController);
 app.use('/users', userController);
 
