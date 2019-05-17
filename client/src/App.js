@@ -216,7 +216,7 @@ class App extends Component {
             })
 
         } else {
-          const adminUserId = '5cddbea066a0da8bcea93c44';
+          const adminUserId = '5cdef3b17742540017fb92dd';
           const workoutArr = parsedWorkouts.data;
           const userWorkouts = workoutArr.filter((workout) => workout.user.toString() === adminUserId.toString());
           
