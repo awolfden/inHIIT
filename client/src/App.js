@@ -119,7 +119,7 @@ class App extends Component {
 
 
       try {
-          const createdUser = await fetch(`${REACT_APP_BACKEND_ADDRESS}/users/register`, {
+          const createdUser = await fetch(`${process.env.REACT_APP_BACKEND_ADDRESS}/users/register`, {
               method: 'POST',
               credentials: 'include',
               body: JSON.stringify(formData),
@@ -150,7 +150,7 @@ class App extends Component {
   loginUser = async (formData, e) => {
       e.preventDefault();
       try {
-        const loginUser = await fetch(`${REACT_APP_BACKEND_ADDRESS}/users/login`, {
+        const loginUser = await fetch(`${process.env.REACT_APP_BACKEND_ADDRESS}/users/login`, {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(formData),
@@ -180,7 +180,7 @@ class App extends Component {
 
   logoutUser = async () => {
     try {
-      const logoutUser = await fetch(`${REACT_APP_BACKEND_ADDRESS}/users/logout`, {
+      const logoutUser = await fetch(`${process.env.REACT_APP_BACKEND_ADDRESS}/users/logout`, {
         method: 'GET',
         credentials: 'include'
       })
@@ -202,7 +202,7 @@ class App extends Component {
   getWorkouts = async () => {
 
     try {
-        const response = await fetch(`${REACT_APP_BACKEND_ADDRESS}/workouts`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_ADDRESS}/workouts`);
 
         if(response.status !== 200){
             throw(Error(response.statusText));
@@ -236,7 +236,7 @@ class App extends Component {
   createWorkout = async (formData, e) => {
     e.preventDefault();
     try {
-        const createdWorkout = await fetch(`${REACT_APP_BACKEND_ADDRESS}/workouts`, {
+        const createdWorkout = await fetch(`${process.env.REACT_APP_BACKEND_ADDRESS}/workouts`, {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify(formData),
@@ -255,7 +255,7 @@ class App extends Component {
 
   deleteWorkout = async (deletedWorkoutID) => {
     try{
-        const deleteWorkout = await fetch(`${REACT_APP_BACKEND_ADDRESS}/workouts/${deletedWorkoutID}`, {
+        const deleteWorkout = await fetch(`${process.env.REACT_APP_BACKEND_ADDRESS}/workouts/${deletedWorkoutID}`, {
             method: 'DELETE',
             credentials: 'include',
             headers: {
@@ -281,7 +281,7 @@ class App extends Component {
   editWorkout = async (e) => {
     e.preventDefault();
     try {
-        const updateWorkout = await fetch(`${REACT_APP_BACKEND_ADDRESS}/workouts/` + this.state.workoutToEdit._id, {
+        const updateWorkout = await fetch(`${process.env.REACT_APP_BACKEND_ADDRESS}/workouts/` + this.state.workoutToEdit._id, {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state.workoutToEdit),
