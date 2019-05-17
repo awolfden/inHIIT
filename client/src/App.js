@@ -222,8 +222,7 @@ class App extends Component {
           
             this.setState({
                 workouts: userWorkouts
-            })
-            
+            })   
         }
         
     } catch(err) {
