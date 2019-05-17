@@ -140,7 +140,6 @@ class App extends Component {
               logFailMsg: 'User name not available'
             })
           }
-
       } catch(err) {
           console.log(err)
       }
