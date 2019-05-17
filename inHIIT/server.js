@@ -16,7 +16,7 @@ dotenv.config();
 
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://api.darksky.net'],
+    origin: [process.env.REACT_ADDRESS, 'https://api.darksky.net'],
     credentials: true,
     optionsSuccessStatus: 200
 }));
@@ -29,12 +29,10 @@ app.use(morgan('short'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});
+
 
 const store = new MongoDBStore({
-    uri: 'mongodb://localhost/inHIIT',
+    uri: process.env.MONGODB_URI,
     collection: 'mySessions'
 });
 
@@ -58,7 +56,9 @@ app.use('/workouts', workoutController);
 app.use('/users', userController);
 
 
-
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 
 
