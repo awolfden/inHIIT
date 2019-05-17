@@ -262,7 +262,6 @@ class App extends Component {
         });
 
         const parsedResponse = await deleteWorkout.json();
-
         if(parsedResponse.status === 200){
             this.setState({
                 workouts: this.state.workouts.filter(workout => workout._id !== deletedWorkoutID)
