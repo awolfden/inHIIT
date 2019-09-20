@@ -47,12 +47,12 @@ class App extends Component {
     weatherSearch = async (e, zipCode) => {
       e.preventDefault();      
       try{
-          const response = await fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/geocode/json?address="${zipCode}"&key=AIzaSyDVPLLlJAQ679Frd0gu11khJ9mW02wsvWQ`);
+          const response = await fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/geocode/json?address="${zipCode}"&key=AIzaSyAMDmvKckK_JMnCHp2DjVbRCdIjEiJUDn4`);
           if(response.status !== 200){
               throw(Error(response.statusText));
           }
           const parsedResponse = await response.json();
-
+          console.log(parsedResponse);
           this.setState({
               lat: parsedResponse.results[0].geometry.location.lat,
               long: parsedResponse.results[0].geometry.location.lng,
@@ -117,6 +117,7 @@ class App extends Component {
     createUser = async (formData, e) => {
       e.preventDefault();
 
+      console.log(formData);
 
       try {
           const createdUser = await fetch(`${process.env.REACT_APP_BACKEND_ADDRESS}/users/register`, {
@@ -158,6 +159,7 @@ class App extends Component {
         }
         })
         const parsedResponse = await loginUser.json();
+        console.log(parsedResponse);
         if(parsedResponse.data.msg === 'login successful'){
           this.setState({
             isLogged: true,
